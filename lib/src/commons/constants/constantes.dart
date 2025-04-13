@@ -15,7 +15,7 @@ final double defaultIconSizeSmall = 20.0;
 
 final List<Widget> emptyList = <Widget>[];
 
-final List<Widget> updateAndDelete = [
+final List<Widget> iconsUpdateAndDelete = [
   IconButton(
     icon: Icon(Icons.edit, color: defaultTextColor),
     onPressed: () {
