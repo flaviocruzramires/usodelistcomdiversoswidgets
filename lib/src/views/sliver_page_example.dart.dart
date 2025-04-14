@@ -154,7 +154,7 @@ Widget obterItemDetail(Transaction item) {
           FontWeight.normal,
           defaultTextColor,
         ).getText(),
-    leading: obterIcon(item),
+    leading: obterIconByTransactiom(item),
     trailing:
         TextCustom(
           '${item.amount.toStringAsFixed(2)}€',
@@ -210,25 +210,4 @@ String obterTextoGrupo(DateTime dateTime) {
     retorno = '${dateTime.year}-${dateTime.month}-${dateTime.day}';
   }
   return retorno;
-}
-
-Icon aplicarEstilo(Icon icon) {
-  return Icon(icon.icon, color: Colors.white60, size: 30);
-}
-
-Icon obterIcon(Transaction item) {
-  Icon? icone;
-  item.type == TransactionType.transport
-      ? icone = const Icon(Icons.directions_bus)
-      : item.type == TransactionType.food
-      ? icone = const Icon(Icons.fastfood)
-      : item.type == TransactionType.shopping
-      ? icone = const Icon(Icons.shopping_bag)
-      : item.type == TransactionType.entertainment
-      ? icone = const Icon(Icons.movie)
-      : item.type == TransactionType.health
-      ? icone = const Icon(Icons.medical_services)
-      : icone = const Icon(Icons.money);
-
-  return aplicarEstilo(icone);
 }

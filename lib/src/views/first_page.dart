@@ -66,9 +66,7 @@ class FirstPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const AtividadeViewer(),
-                  ),
+                  MaterialPageRoute(builder: (context) => AtividadeViewer()),
                 );
               },
               child: const Text('Atividade Viewer'),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sliverexemple/src/commons/constants/constantes.dart';
+import 'package:sliverexemple/src/commons/widgets/text_custom.dart';
 
 class DataSourceListTile {
   Widget? title;
@@ -12,10 +14,32 @@ class DataSourceListTile {
     required this.trailing,
   });
 
+  ListTile setStyle(ListTile listTile) {
+    title = title;
+    subtitle = subtitle;
+    leading = leading;
+    trailing = trailing;
+
+    return listTile;
+  }
+
   ListTile toListTile() {
     return ListTile(
-      title: title,
-      subtitle: subtitle,
+      title:
+          TextCustom(
+            title.toString(),
+            defaultFonteSize,
+            FontWeight.bold,
+            defaultTextColor,
+          ).getText(),
+
+      subtitle:
+          TextCustom(
+            subtitle.toString(),
+            defaultFonteSize,
+            FontWeight.normal,
+            defaultTextColor,
+          ).getText(),
       leading: leading,
       trailing: trailing,
     );

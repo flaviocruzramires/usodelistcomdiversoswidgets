@@ -1,9 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:sliverexemple/src/commons/constants/constantes.dart';
+import 'package:sliverexemple/src/commons/enumerators/enumerators.dart';
 import 'package:sliverexemple/src/commons/widgets/text_custom.dart';
+import 'package:sliverexemple/src/commons/widgets/text_field_custom.dart';
+import 'package:sliverexemple/src/controllers/atividade_controller.dart';
+import 'package:sliverexemple/src/models/atividade.dart';
 
 class AtividadeViewer extends StatelessWidget {
-  const AtividadeViewer({super.key});
+  // AtividadeViewer({super.key});
+
+  List<Atividade> atividades = [];
+
+  AtividadeViewer({super.key}) {
+    atividades.addAll([
+      Atividade(
+        id: 1,
+        descricao: 'Atividade 1',
+        data: '2023-01-01',
+        hora: '08:00',
+        local: 'Local 1',
+        categoria: CategoriaAtividades.trabalho,
+      ),
+      Atividade(
+        id: 2,
+        descricao: 'Atividade 2',
+        data: '2023-01-01',
+        hora: '08:00',
+        local: 'Local 1',
+        categoria: CategoriaAtividades.alimentacao,
+      ),
+      Atividade(
+        id: 3,
+        descricao: 'Atividade 3',
+        data: '2023-01-01',
+        hora: '08:00',
+        local: 'Local 1',
+        categoria: CategoriaAtividades.viagem,
+      ),
+      Atividade(
+        id: 4,
+        descricao: 'Atividade 4',
+        data: '2023-01-01',
+        hora: '08:00',
+        local: 'Local 2',
+        categoria: CategoriaAtividades.exercicio,
+      ),
+      Atividade(
+        id: 5,
+        descricao: 'Atividade 5',
+        data: '2023-01-01',
+        hora: '08:00',
+        local: 'Local 3',
+        categoria: CategoriaAtividades.social,
+      ),
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,93 +72,7 @@ class AtividadeViewer extends StatelessWidget {
       ),
       body: Container(
         color: paletaCor,
-        child: Center(
-          child: ListView(
-            children: <Widget>[
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.local_activity,
-                    color: defaultTextColor,
-                  ),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () {
-                      // Clear the text field
-                    },
-                  ),
-                  border: UnderlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: defaultTextColor, width: 2.0),
-                  ),
-                  labelText: 'Digite o nome da atividade',
-                  hintText: 'Nome da atividade',
-                  labelStyle: TextStyle(
-                    color: defaultTextColor,
-                    fontSize: defaultFonteSize,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite a descrição da atividade',
-                  hintText: 'Descrição da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite a data da atividade',
-                  hintText: 'Data da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite o status da atividade',
-                  hintText: 'Status da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite o local da atividade',
-                  hintText: 'Local da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite a observação da atividade',
-                  hintText: 'Observação da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite a categoria da atividade',
-                  hintText: 'Categoria da atividade',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite o tipo da atividade',
-                  hintText: 'Tipo da atividade',
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: AtividadeController().toViewer(atividades),
       ),
     );
   }
