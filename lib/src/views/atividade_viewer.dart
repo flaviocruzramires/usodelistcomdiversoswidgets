@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sliverexemple/src/commons/constants/constantes.dart';
 import 'package:sliverexemple/src/commons/enumerators/enumerators.dart';
 import 'package:sliverexemple/src/commons/widgets/text_custom.dart';
-import 'package:sliverexemple/src/commons/widgets/text_field_custom.dart';
 import 'package:sliverexemple/src/controllers/atividade_controller.dart';
 import 'package:sliverexemple/src/models/atividade.dart';
 
@@ -12,48 +11,7 @@ class AtividadeViewer extends StatelessWidget {
   List<Atividade> atividades = [];
 
   AtividadeViewer({super.key}) {
-    atividades.addAll([
-      Atividade(
-        id: 1,
-        descricao: 'Atividade 1',
-        data: '2023-01-01',
-        hora: '08:00',
-        local: 'Local 1',
-        categoria: CategoriaAtividades.trabalho,
-      ),
-      Atividade(
-        id: 2,
-        descricao: 'Atividade 2',
-        data: '2023-01-01',
-        hora: '08:00',
-        local: 'Local 1',
-        categoria: CategoriaAtividades.alimentacao,
-      ),
-      Atividade(
-        id: 3,
-        descricao: 'Atividade 3',
-        data: '2023-01-01',
-        hora: '08:00',
-        local: 'Local 1',
-        categoria: CategoriaAtividades.viagem,
-      ),
-      Atividade(
-        id: 4,
-        descricao: 'Atividade 4',
-        data: '2023-01-01',
-        hora: '08:00',
-        local: 'Local 2',
-        categoria: CategoriaAtividades.exercicio,
-      ),
-      Atividade(
-        id: 5,
-        descricao: 'Atividade 5',
-        data: '2023-01-01',
-        hora: '08:00',
-        local: 'Local 3',
-        categoria: CategoriaAtividades.social,
-      ),
-    ]);
+    criarAtividades(50);
   }
 
   @override
@@ -68,12 +26,45 @@ class AtividadeViewer extends StatelessWidget {
               defaultTextColor,
             ).getText(),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: paletaCor,
       ),
       body: Container(
-        color: paletaCor,
-        child: AtividadeController().toViewer(atividades),
+        // padding: const EdgeInsets.all(16.0),
+        // margin: const EdgeInsets.all(16.0),
+        height: MediaQuery.of(context).size.height * 0.92,
+        width: MediaQuery.of(context).size.width * 1,
+        decoration: BoxDecoration(
+          color: paletaCor,
+          borderRadius: BorderRadius.zero,
+          border: Border.all(color: defaultTextColor, width: 1.0),
+          boxShadow: [
+            BoxShadow(
+              color: defaultTextColor,
+              blurRadius: 10.0,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+
+        child: AtividadeController().toDataTable(atividades),
+        // child: AtividadeController().toViewer(atividades),
       ),
     );
+  }
+
+  void criarAtividades(int quantidade) {
+    for (int i = 0; i < quantidade; i++) {
+      atividades.add(
+        Atividade(
+          id: i + 1,
+          descricao: 'Atividade ${i + 1}',
+          data: '2023-01-01',
+          hora: '08:00',
+          local: 'Local ${i + 1}',
+          categoria:
+              CategoriaAtividades.values[i % CategoriaAtividades.values.length],
+        ),
+      );
+    }
   }
 }

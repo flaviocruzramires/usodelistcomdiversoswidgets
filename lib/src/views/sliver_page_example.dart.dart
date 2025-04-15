@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_grouped_list/infinite_grouped_list.dart';
 import 'package:sliverexemple/src/commons/constants/constantes.dart';
-import 'package:sliverexemple/src/commons/enumerators/enumerators.dart';
 import 'package:sliverexemple/src/commons/functions/functions.dart';
 import 'package:sliverexemple/src/commons/models/data_source_list_tile.dart';
 import 'package:sliverexemple/src/commons/widgets/app_bar_custom.dart';
@@ -35,38 +34,6 @@ class _MyHomePageState extends State<SliverPageExample> {
     return Scaffold(
       backgroundColor: paletaCor.withOpacity(0.1),
       appBar: AppBarCustom.getAppBar(title: widget.title),
-      // AppBar(
-      //   elevation: 3,
-      //   titleSpacing: 0,
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.menu, color: Colors.white, size: 30),
-      //     onPressed: () {
-      //       // Navigator.pop(context);
-      //     },
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: paletaCor,
-      //   title: Text(
-      //     widget.title,
-      //     style: const TextStyle(
-      //       fontSize: 20,
-      //       fontWeight: FontWeight.bold,
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.search_rounded, color: Colors.white),
-      //       onPressed: () {
-      //         setState(() {
-      //           dontThrowError = !dontThrowError;
-      //           index = 0;
-      //           baseDate = DateTime.now();
-      //         });
-      //       },
-      //     ),
-      //   ],
-      // ),
       body: InfiniteGroupedList<Transaction, DateTime, String>(
         groupBy: (item) => item.dateTime,
         sortGroupBy: (item) => item.dateTime,
